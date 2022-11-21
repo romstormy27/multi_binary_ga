@@ -2,7 +2,6 @@ import pandas as pd
 import streamlit as st
 import requests
 from PIL import Image
-import time
 
 st.title("Multi-Objective Continuous Genetic Algorithm")
 
@@ -91,7 +90,7 @@ with st.form(key="input_params"):
         }
 
         with st.spinner("Running..."):
-            res = requests.post("http://127.0.0.1:8000/run/", json=input_params).json()
+            res = requests.post("http://api:8080/run/", json=input_params).json()
 
         if res["msg"] != None:
             st.error(str(res["msg"]))
