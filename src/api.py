@@ -3,12 +3,13 @@ from pydantic import BaseModel
 import uvicorn
 
 import src.main as main
+import src.fitness as fitness
 
 class InputParams(BaseModel):
 
+    fit_expr: str
     n_chrom: int
     max_gen: int
-    fit_expr: str
     lower_x1: float
     upper_x1: float
     lower_x2: float
@@ -23,7 +24,7 @@ app = FastAPI()
 async def home():
     return {"Hello": "World"}
 
-@app.post("/run")
+@app.post("/run/")
 async def run(params: InputParams):
 
     params = dict(params)
@@ -32,23 +33,29 @@ async def run(params: InputParams):
     
         last_gen, solution_list = main.main(params)
 
-        best_gen = main.get_best_gen(solution_list)
+        best_gen = fitness.get_best_gen(solution_list, plot=True)
 
     except RuntimeError as e:
 
-        return f"Some error happened with error massage: {e}"
+        msg = f"Some error happened with error massage: {e}"
+
+        return {"solution_list": None, "best_gen": None, "msg": msg}
 
     except TypeError as e:
 
         if str(e) == "Cannot convert complex to float":
 
-            return "your expression is somehow invalid\nnote:please mind lower and upper bound so that your expression would not returning complex number or zero division"
+            msg = "Your expression is somehow invalid!. \nnote:please mind lower and upper bound so that your expression would not returning complex number or zero division"
+
+            return {"solution_list": None, "best_gen": None, "msg": msg}
 
         else:
 
-            return "your expression is somehow invalid"
+            msg = "Your expression is somehow invalid!"
 
-    return {"solution_list": solution_list, "best_gen": best_gen}
+            return {"solution_list": None, "best_gen": None, "msg": msg}
+
+    return {"solution_list": solution_list, "best_gen": best_gen, "msg": None}
 
 if __name__=="__main__":
 
