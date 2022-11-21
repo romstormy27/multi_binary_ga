@@ -8,3 +8,6 @@ upper_x2: 10
 precision: 5
 crossover_rate: 0.3
 mutation_rate: 0.01
+
+# path
+save_plot_path: "asset/fitness_plot.png"
