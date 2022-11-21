@@ -2,17 +2,11 @@
 
 1. Clone the repo
 
-2. Create your Python 3 venv
+2. Make sure you have Docker Engine installed and running
 
-3. Activate Venv
+3. run in terminal:
+    `docker-compose up`
 
-4. Install dependency using
+4. Navigate to http://localhost:8501
 
-
-  `pip install -r requirements.txt`
-
-
-5. using terimal, run:
-
-
-  `python3 src/main.py`
+5. Friendly UI can be accessed
