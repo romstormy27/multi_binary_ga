@@ -11,6 +11,8 @@ import matplotlib.pyplot as plt
 random.seed(42)
 np.random.seed(42)
 
+config = load_config()
+
 def decoding(chrom, lower, upper):
 
   decoded = {}
@@ -133,6 +135,8 @@ def get_best_gen(all_gen, plot=False):
     plt.legend()
 
     plt.show()
+
+    plt.savefig(config["save_plot_path"], bbox_inches='tight')
 
   print()
   print("Best generation index:", best_gen_idx)
