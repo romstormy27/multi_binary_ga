@@ -2,6 +2,7 @@ name: multiobjective_genetic_algorithm
 services:
   front_end:
     build: docker/front_end
+    context: .
     image: ga_frontend
     container_name: ga_frontend
     depends_on:
@@ -12,6 +13,7 @@ services:
       - ./:/app/
   api:
     build: docker/api
+    context: .
     image: ga_backend
     container_name: ga_backend
     environment:
