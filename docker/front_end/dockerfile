@@ -11,4 +11,5 @@ pip install wheel && \
 pip install -r requirements.txt
 COPY ./ ./
 EXPOSE 8501
+ENV PYTHONPATH=/app
 CMD ["streamlit", "run", "src/front_end.py"]
