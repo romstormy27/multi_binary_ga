@@ -10,7 +10,7 @@ with st.form(key="input_params"):
     fit_expr = st.text_input(
         label = "Function to Optimize: ",
         max_chars=100,
-        placeholder="example: -x1/100+x2**2",
+        placeholder="example: 33.7+x1*sin(4*pi*x1)+x2*sin(20*pi*x2)",
         help="You must define objective function in python math format using x1 and x2 otherwise error will be raised"
     )
 
