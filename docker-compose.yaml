@@ -1,7 +1,7 @@
 name: multiobjective_genetic_algorithm
 services:
   front_end:
-    build: docker/front_end
+    build: docker/front_end/
     image: ga_frontend
     container_name: ga_frontend
     depends_on:
@@ -9,12 +9,16 @@ services:
     ports:
       - 8501:8501
     volumes:
-      - ./:/app/
+      - ./src/:/app/src/
+      - ./config/:/app/config/
   api:
-    build: docker/api
+    build: docker/api/
     image: ga_backend
     container_name: ga_backend
+    environment:
+      - PORT=80
     ports:
-      - 8080:8080
+      - 8080:80
     volumes:
-      - ./:/app/
+      - ./src/:/app/src/
+      - ./config/:/app/config/

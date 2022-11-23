@@ -33,7 +33,7 @@ async def run(params: InputParams):
     
         last_gen, solution_list = main.main(params)
 
-        best_gen = fitness.get_best_gen(solution_list, plot=True)
+        best_gen = fitness.get_best_gen(solution_list)
 
     except RuntimeError as e:
 
