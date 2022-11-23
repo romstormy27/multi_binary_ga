@@ -90,7 +90,8 @@ with st.form(key="input_params"):
         }
 
         with st.spinner("Running..."):
-            res = requests.post("https://multiga.herokuapp.com/run/", json=input_params).json()
+            # res = requests.post("https://multiga.herokuapp.com/run/", json=input_params).json()
+            res = requests.post("https://9kl7z6.deta.dev/run/", json=input_params).json()
 
         if res["msg"] != None:
             st.error(str(res["msg"]))
