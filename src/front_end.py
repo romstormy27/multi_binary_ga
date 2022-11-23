@@ -3,6 +3,11 @@ import streamlit as st
 import requests
 from PIL import Image
 
+st.set_page_config(
+    page_title="MOCGA Runner",
+    page_icon="🧬",
+)
+
 st.title("Multi-Objective Continuous Genetic Algorithm")
 
 with st.form(key="input_params"):
