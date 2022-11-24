@@ -5,7 +5,7 @@ from PIL import Image
 
 st.set_page_config(
     page_title="MOCGA Runner",
-    page_icon="🧬",
+    page_icon=":chart_with_upwards_trend:",
 )
 
 st.title("Multi-Objective Continuous Genetic Algorithm")
@@ -80,9 +80,29 @@ with st.form(key="input_params"):
 
     if submitted:
 
+        if not fit_expr:
+            st.warning("Please input the function expression")
+            st.stop()
+        
+        if "x1" not in fit_expr:
+            st.warning("There must be x1 variable in the expression")
+            st.stop()
+
+        if "x2" not in fit_expr:
+            st.warning("There must be x2 variable in the expression")
+            st.stop()
+
+        if lower_x1 >= upper_x1:
+            st.warning("Lower and upper bound for x1 must be different!")
+            st.stop()
+
+        if lower_x2 >= upper_x2:
+            st.warning("Lower and upper bound for x2 must be different!")
+            st.stop()
+
         # create dict of input params
         input_params = {
-            "fit_expr": fit_expr,
+            "fit_expr": fit_expr.lower(), #lower all uppercase
             "n_chrom": n_chrom,
             "max_gen": max_gen,
             "lower_x1": lower_x1,
