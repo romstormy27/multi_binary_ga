@@ -115,8 +115,14 @@ with st.form(key="input_params"):
         }
 
         with st.spinner("Running..."):
+            # after 28th november heroku wouldn't available anymore
             # res = requests.post("https://multiga.herokuapp.com/run/", json=input_params).json()
-            res = requests.post("https://9kl7z6.deta.dev/run/", json=input_params).json()
+
+            # use deta. forever free but can only handle small project size
+            # res = requests.post("https://9kl7z6.deta.dev/run/", json=input_params).json()
+
+            # use railways. 500 hrs free each month. can use docker
+            res = requests.post("https://multibinaryga-production.up.railway.app/run/", json=input_params).json()
 
         if res["msg"] != None:
             st.error(str(res["msg"]))
