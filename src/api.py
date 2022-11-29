@@ -35,7 +35,7 @@ async def run(params: InputParams):
 
         best_gen = fitness.get_best_gen(solution_list)
 
-        # res = {"solution_list": solution_list, "best_gen": best_gen, "msg": None}
+        res = {"solution_list": solution_list, "best_gen": best_gen, "msg": None}
 
     except RuntimeError as e:
 
