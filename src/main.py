@@ -85,7 +85,7 @@ def main(params):
     # get x1 and x2
     x1_encoded, x2_encoded = get_x1_x2(mutated, x1_encoded)
 
-  return solutions, solution_list
+  return solution_list
 
 
 if __name__ == "__main__":
@@ -94,7 +94,7 @@ if __name__ == "__main__":
 
     try:
 
-      solution, solution_list = main(params)
+      solution_list = main(params)
 
       get_best_gen(solution_list)
 

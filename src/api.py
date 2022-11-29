@@ -55,6 +55,12 @@ async def run(params: InputParams):
 
             return {"solution_list": None, "best_gen": None, "msg": msg}
 
+    except:
+
+        msg = "Something went wrong"
+
+        {"solution_list": None, "best_gen": None, "msg": msg}
+
     return {"solution_list": solution_list, "best_gen": best_gen, "msg": None}
 
 if __name__=="__main__":
