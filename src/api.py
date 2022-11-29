@@ -31,15 +31,17 @@ async def run(params: InputParams):
 
     try:
     
-        last_gen, solution_list = main.main(params)
+        solution_list = main.main(params)
 
         best_gen = fitness.get_best_gen(solution_list)
+
+        # res = {"solution_list": solution_list, "best_gen": best_gen, "msg": None}
 
     except RuntimeError as e:
 
         msg = f"Some error happened with error massage: {e}"
 
-        return {"solution_list": None, "best_gen": None, "msg": msg}
+        res = {"solution_list": None, "best_gen": None, "msg": msg}
 
     except TypeError as e:
 
@@ -47,21 +49,21 @@ async def run(params: InputParams):
 
             msg = "Your expression is somehow invalid!. \nnote:please mind lower and upper bound so that your expression would not returning complex number or zero division"
 
-            return {"solution_list": None, "best_gen": None, "msg": msg}
+            res = {"solution_list": None, "best_gen": None, "msg": msg}
 
         else:
 
             msg = "Your expression is somehow invalid!"
 
-            return {"solution_list": None, "best_gen": None, "msg": msg}
+            res = {"solution_list": None, "best_gen": None, "msg": msg}
 
     except:
 
         msg = "Something went wrong"
 
-        {"solution_list": None, "best_gen": None, "msg": msg}
+        res = {"solution_list": None, "best_gen": None, "msg": msg}
 
-    return {"solution_list": solution_list, "best_gen": best_gen, "msg": None}
+    return res
 
 if __name__=="__main__":
 
