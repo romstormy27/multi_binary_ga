@@ -2,6 +2,8 @@
 
 1. Clone the repo
 
+coba
+
 2. Make sure you have Docker Engine installed and running
 
 3. run in terminal:
